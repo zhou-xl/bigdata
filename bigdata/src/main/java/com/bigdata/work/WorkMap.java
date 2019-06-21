@@ -1,12 +1,13 @@
 package com.bigdata.work;
 
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
 
-public class WorkMap extends Mapper<LongWritable, Text, Text, LongWritable> {
+public class WorkMap extends Mapper<LongWritable, Text, Text, IntWritable> {
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 
@@ -14,6 +15,6 @@ public class WorkMap extends Mapper<LongWritable, Text, Text, LongWritable> {
 
         String[] strings = line.split(",");
 
-        context.write(new Text(strings[1]), new LongWritable(Long.parseLong(strings[2])));
+        context.write(new Text(strings[1]), new IntWritable(Integer.parseInt(strings[2])));
     }
 }
