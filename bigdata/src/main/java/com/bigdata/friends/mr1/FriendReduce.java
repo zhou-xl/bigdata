@@ -14,6 +14,6 @@ public class FriendReduce extends Reducer<Text, Text, Text, Text> {
             sb.append(item).append(",");
         }
 
-        context.write(key, new Text(sb.toString().substring(0, sb.lastIndexOf("."))));
+        context.write(key, new Text(sb.toString().substring(0, sb.lastIndexOf(","))));
     }
 }

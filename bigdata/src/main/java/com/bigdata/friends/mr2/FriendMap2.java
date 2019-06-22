@@ -23,7 +23,7 @@ public class FriendMap2 extends Mapper<LongWritable, Text, Text, Text> {
 
         Arrays.sort(strings1);
         for (int i = 0; i < strings1.length; i++) {
-            for (int j = 0; j < strings1.length - 1; j++) {
+            for (int j = 1 + i; j < strings1.length - 1; j++) {
                 k.set(strings1[i] + "-" + strings1[j]);
                 context.write(k, v);
             }
